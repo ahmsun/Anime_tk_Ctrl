@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>anime_tk_ctrl | Anime Creator & Deals</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:#0b0d12;
+  color:#fff;
+  font-family:Poppins,sans-serif;
+}
+
+/* HEADER */
+header{
+  padding:16px;
+  text-align:center;
+  background:#0f1118;
+}
+header h1{font-family:Orbitron;font-size:20px}
+header p{font-size:12px;color:#999;margin-top:4px}
+
+/* HERO */
+.hero{
+  padding:22px 14px;
+  text-align:center;
+}
+.hero h2{
+  font-family:Orbitron;
+  font-size:24px;
+}
+.hero span{color:#ff3d81}
+.hero p{font-size:13px;color:#bbb;margin-top:6px}
+
+/* SEARCH BAR */
+.search-box{
+  padding:0 14px 10px;
+}
+.search-box input{
+  width:100%;
+  padding:10px 14px;
+  border-radius:30px;
+  border:none;
+  outline:none;
+  font-size:14px;
+  background:#12141c;
+  color:#fff;
+}
+.search-box input::placeholder{color:#777}
+
+/* SECTION */
+.section{padding:18px 14px}
+.section h3{
+  font-family:Orbitron;
+  font-size:18px;
+  margin-bottom:12px;
+}
+
+/* PRODUCTS — GAP REDUCED HERE ✅ */
+.products{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px; /* pehle 12px tha */
+}
+
+/* CARD */
+.card{
+  background:#12141c;
+  border-radius:14px;
+  padding:8px;
+  display:flex;
+  flex-direction:column;
+  min-height:235px;
+  animation:fadeUp .35s ease;
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(10px) scale(.97)}
+  to{opacity:1;transform:none}
+}
+.card img{
+  width:100%;
+  border-radius:10px;
+}
+.card h4{
+  font-size:12px;
+  font-weight:500;
+  line-height:1.3;
+  margin:6px 0 2px;
+}
+.price{
+  font-size:13px;
+  font-weight:600;
+  color:#ff3d81;
+}
+.rating{font-size:11px;color:#aaa}
+.badge{font-size:10px;color:#ff3d81}
+
+/* BUTTON ALWAYS BOTTOM */
+.card a{
+  margin-top:auto;
+  padding:7px;
+  font-size:12px;
+  text-align:center;
+  background:#ff3d81;
+  color:#000;
+  border-radius:8px;
+  font-weight:600;
+  text-decoration:none;
+}
+
+/* NO RESULT */
+.no-result{
+  grid-column:1/3;
+  text-align:center;
+  font-size:13px;
+  color:#888;
+  padding:20px;
+}
+
+/* FOOTER */
+footer{
+  padding:20px 14px;
+  text-align:center;
+  font-size:11px;
+  color:#777;
+}
+
+/* DESKTOP */
+@media(min-width:768px){
+  .products{grid-template-columns:repeat(4,1fr)}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>anime_tk_ctrl</h1>
+  <p>Anime Creator • Reviews • Merch Picks</p>
+</header>
+
+<section class="hero">
+  <h2>Control Your <span>Anime Style</span></h2>
+  <p>Search & shop anime picks loved by fans</p>
+</section>
+
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="Search anime products…">
+</div>
+
+<section class="section">
+  <h3>🛒 Anime Picks</h3>
+  <div class="products" id="productList"></div>
+</section>
+
+<footer>
+  © 2026 anime_tk_ctrl <br>
+  Affiliate Disclosure: I may earn from qualifying purchases.
+</footer>
+
+<script>
+const products = [
+  {title:"Awestuffs Action Figure (Nezuko DemonSlayer)",price:"₹423",img:"https://m.media-amazon.com/images/I/41Cly3YT1BL._SY300_SX300_QL70_FMwebp_.jpg",rating:"★★★★☆ (77)",badge:"Best Seller",link:"https://amazon.oia.bio/anime-tk-ctrl"},
+  {title:"Anime Manga printed jacket for men",price:"₹902",img:"https://m.media-amazon.com/images/I/61aonyKpkKL._SX679_.jpg",rating:"★★★★☆ (10)",badge:"Viral",link:"https://amzn.to/49u8bNV"},
+  {title:"DemonSlayer Acrylic Glowing Eyes Keychain",price:"₹199",img:"https://m.media-amazon.com/images/I/61emLRFMIyL._SX679_.jpg",rating:"★★★★☆ (13)",badge:"Viral",link:"https://amzn.to/49u8bNV"},
+  {title:"Tanjiro Bamboo Sword 41 inch",price:"₹11,181",img:"https://m.media-amazon.com/images/I/71IHLSgKQyL._SX679_.jpg",rating:"★★★★☆ (1358)",badge:"Most Loved",link:"https://amzn.to/49i6nHu"},
+  {title:"One Piece Action Figure",price:"₹1,199",img:"https://m.media-amazon.com/images/I/61op+F7QRuL._SY450_.jpg",rating:"★★★★☆ (188)",badge:"Trending",link:"https://amzn.to/4qL2bHz"},
+  {title:"Akaza Oversized Anime T-Shirt",price:"₹449",img:"https://m.media-amazon.com/images/I/81+jTvrVxlL._SY741_.jpg",rating:"★★★★☆ (645)",badge:"Trending",link:"https://amzn.to/458zf3Y"},
+  {title:"Gojo Anime Keychain",price:"₹99",img:"https://m.media-amazon.com/images/I/81pzhJBc7pL._SX679_.jpg",rating:"★★★★☆ (2)",badge:"Viral",link:"https://amzn.to/4aSiRbA"},
+  {title:"Zenitsu Wall Poster",price:"₹99",img:"https://m.media-amazon.com/images/I/61BZasdv2+L._SX450_.jpg",rating:"★★★★☆ (56)",badge:"Hot Deal",link:"https://amzn.to/49rFYqT"},
+  {title:"50 Random Anime Stickers",price:"₹99",img:"https://m.media-amazon.com/images/I/91Cr0AaIIyL._SX679_.jpg",rating:"★★★★☆ (76)",badge:"Trending",link:"https://amzn.to/45GFdck"},
+  {title:"Upper Moon Oversized T-Shirt",price:"₹999",img:"https://m.media-amazon.com/images/I/81rLl9qdF9L._SY741_.jpg",rating:"★★★★☆ (789)",badge:"Hot Deal",link:"https://amzn.to/4q9iC0k"},
+  {title:"Shinobu Kocho Oversized T-Shirt",price:"₹499",img:"https://m.media-amazon.com/images/I/81PvaQkZ2kL._SY879_.jpg",rating:"★★★★☆ (100)",badge:"Trending",link:"https://amzn.to/4558iy9"},
+  {title:"Tengen Uzui Action Figure",price:"₹1,399",img:"https://m.media-amazon.com/images/I/51gZ5KRBnHL._SX679_.jpg",rating:"★★★★☆ (999+)",badge:"Best Seller",link:"https://amzn.to/3NCUcxK"}
+];
+
+const list=document.getElementById("productList");
+const search=document.getElementById("searchInput");
+
+function render(items){
+  list.innerHTML="";
+  if(items.length===0){
+    list.innerHTML=`<div class="no-result">No products found 😕</div>`;
+    return;
+  }
+  items.forEach(p=>{
+    list.innerHTML+=`
+      <div class="card">
+        <img src="${p.img}">
+        <h4>${p.title}</h4>
+        <div class="price">${p.price}</div>
+        <div class="rating">${p.rating}</div>
+        <div class="badge">${p.badge}</div>
+        <a href="${p.link}" target="_blank" rel="nofollow">Buy on Amazon</a>
+      </div>
+    `;
+  });
+}
+
+render(products);
+
+search.addEventListener("input",()=>{
+  const v=search.value.toLowerCase();
+  render(products.filter(p=>p.title.toLowerCase().includes(v)));
+});
+</script>
+
+</body>
+</html>
